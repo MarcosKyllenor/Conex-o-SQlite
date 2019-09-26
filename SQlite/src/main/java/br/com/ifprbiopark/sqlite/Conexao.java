@@ -36,7 +36,10 @@ public class Conexao {
             PreparedStatement pstm = c.prepareStatement(sql);
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
-                System.out.println("Bruna");
+                System.out.print("ID: ");
+                System.out.print(rs.getInt("ID"));
+                System.out.print(" NOME: :");
+                System.out.println(rs.getString("NOME"));
 
             }
         } catch (SQLException ex) {
