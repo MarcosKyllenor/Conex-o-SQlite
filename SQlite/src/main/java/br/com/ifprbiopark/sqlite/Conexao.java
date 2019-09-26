@@ -24,11 +24,21 @@ public class Conexao {
         try {
             Connection c = DriverManager.getConnection("jdbc:sqlite:tds.db");
             Statement stm = c.createStatement();
+
             // Criando Tabela
             stm.execute("CREATE TABLE IF NOT EXISTS ALUNO(ID INTEGER, NOME VARCHAR(50))");
-            
+
             // inserindo registros
             stm.execute("INSERT INTO ALUNO(ID, NOME) VALUES (1, 'BRUNA'), (2, 'MARCOS')");
+
+            // lendo registros
+            String sql = "SELECT * FROM ALUNO";
+            PreparedStatement pstm = c.prepareStatement(sql);
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                System.out.println("Bruna");
+
+            }
         } catch (SQLException ex) {
             Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
         }
